@@ -1,17 +1,19 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: rgb(8 13 39 );
+  --background: rgb(8 13 39);
   --foreground: #ffffff;
   --primary: #f5f5f5;
   --secondary: #0a0a0a;
-  --muted: #4B5E66;
+  --muted: #4b5e66;
   --accent: #f15e22;
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-comic: 'Comic Neue', sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-comic: "Comic Neue", sans-serif;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -22,12 +24,19 @@
   --font-comic: var(--font-comic);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-montserrat);
-}
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-montserrat);
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-comic);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-comic);
+  }
 }
