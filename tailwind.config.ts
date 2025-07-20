@@ -1,27 +1,57 @@
-/** @type {import('tailwindcss').Config} */
-import shadcnConfig from "shadcn/ui/tailwind.config"
+// tailwind.config.ts
+import type { Config } from "tailwindcss"
+import defaultConfig from "shadcn/ui/tailwind.config"
 
-export default {
-  ...shadcnConfig,
-  content: ["./**/*.{html,js,ts,tsx}", "*.{js,ts,jsx,tsx,mdx}"], // Include .ts and .tsx files
+const config: Config = {
+  ...defaultConfig,
+  content: [
+    ...defaultConfig.content,
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./**/*.{js,ts,jsx,tsx,mdx}",
+    "*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
-    ...shadcnConfig.theme,
+    ...defaultConfig.theme,
     extend: {
-      ...shadcnConfig.theme.extend.colors,
+      ...defaultConfig.theme.extend,
       colors: {
-        background: "var(--color-background)",
-        foreground: "var(--color-foreground)",
-        primary: "var(--color-primary)",
-        secondary: "var(--color-secondary)",
-        muted: "var(--color-muted)",
-        accent: "var(--color-accent)",
+        ...defaultConfig.theme.extend.colors,
+        primary: {
+          DEFAULT: "rgb(var(--primary) / <alpha-value>)",
+          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
+        },
+        secondary: {
+          DEFAULT: "rgb(var(--secondary) / <alpha-value>)",
+          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
+        },
+        destructive: {
+          DEFAULT: "rgb(var(--destructive) / <alpha-value>)",
+          foreground: "rgb(var(--destructive-foreground) / <alpha-value>)",
+        },
+        muted: {
+          DEFAULT: "rgb(var(--muted) / <alpha-value>)",
+          foreground: "rgb(var(--muted-foreground) / <alpha-value>)",
+        },
+        accent: {
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          foreground: "rgb(var(--accent-foreground) / <alpha-value>)",
+        },
+        popover: {
+          DEFAULT: "rgb(var(--popover) / <alpha-value>)",
+          foreground: "rgb(var(--popover-foreground) / <alpha-value>)",
+        },
+        card: {
+          DEFAULT: "rgb(var(--card) / <alpha-value>)",
+          foreground: "rgb(var(--card-foreground) / <alpha-value>)",
+        },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        comic: ["var(--font-comic)", "cursive"],
       },
     },
   },
-  plugins: [...shadcnConfig.plugins, require("tailwindcss-animate")],
+  plugins: [...defaultConfig.plugins, require("tailwindcss-animate")],
 }
+
+export default config
