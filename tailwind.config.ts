@@ -1,31 +1,20 @@
-import type { Config } from "tailwindcss"
-import defaultConfig from "shadcn/ui/tailwind.config"
+/** @type {import('tailwindcss').Config} */
+import shadcnConfig from "shadcn/ui/tailwind.config"
 
-const config: Config = {
-  ...defaultConfig,
-  content: [
-    ...defaultConfig.content,
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}",
-  ],
+export default {
+  ...shadcnConfig,
+  content: ["./**/*.{html,js,ts,tsx}", "*.{js,ts,jsx,tsx,mdx}"], // Include .ts and .tsx files
   theme: {
-    ...defaultConfig.theme,
+    ...shadcnConfig.theme,
     extend: {
-      ...defaultConfig.theme.extend,
+      ...shadcnConfig.theme.extend.colors,
       colors: {
-        ...defaultConfig.theme.extend.colors,
-        background: "rgb(8 13 39)",
-        foreground: "#ffffff",
-        primary: "#f5f5f5",
-        secondary: "#0a0a0a",
-        muted: "#4B5E66",
-        accent: "#f15e22",
-      },
-      fontFamily: {
-        montserrat: ["var(--font-montserrat)"],
-        comic: ["var(--font-comic)"],
+        background: "var(--color-background)",
+        foreground: "var(--color-foreground)",
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        muted: "var(--color-muted)",
+        accent: "var(--color-accent)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -34,7 +23,5 @@ const config: Config = {
       },
     },
   },
-  plugins: [...defaultConfig.plugins, require("tailwindcss-animate")],
+  plugins: [...shadcnConfig.plugins, require("tailwindcss-animate")],
 }
-
-export default config

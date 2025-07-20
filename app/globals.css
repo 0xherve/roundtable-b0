@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: rgb(8 13 39);
@@ -9,11 +7,24 @@
   --secondary: #0a0a0a;
   --muted: #4b5e66;
   --accent: #f15e22;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-comic: "Comic Neue", sans-serif;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-montserrat: var(--font-montserrat);
+  --font-comic: var(--font-comic);
 }
 
 body {
-  background-color: rgb(8 13 39);
-  color: #ffffff;
+  background: var(--background);
+  color: var(--foreground);
   font-family: var(--font-montserrat);
 }
 
