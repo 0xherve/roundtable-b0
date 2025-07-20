@@ -1,20 +1,56 @@
-/** @type {import('tailwindcss').Config} */
-import shadcnConfig from "shadcn/ui/tailwind.config"
+import type { Config } from "tailwindcss"
+import defaultConfig from "tailwindcss/defaultConfig"
 
-export default {
-  ...shadcnConfig,
-  content: ["./**/*.{html,js,ts,tsx}", "*.{js,ts,jsx,tsx,mdx}"], // Include .ts and .tsx files
+const config: Config = {
+  ...defaultConfig,
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./**/*.{js,ts,jsx,tsx,mdx}",
+    "*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
-    ...shadcnConfig.theme,
     extend: {
-      ...shadcnConfig.theme.extend.colors,
       colors: {
-        background: "var(--color-background)",
-        foreground: "var(--color-foreground)",
-        primary: "var(--color-primary)",
-        secondary: "var(--color-secondary)",
-        muted: "var(--color-muted)",
-        accent: "var(--color-accent)",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        comic: ["var(--font-comic)", "cursive"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -23,5 +59,7 @@ export default {
       },
     },
   },
-  plugins: [...shadcnConfig.plugins, require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")],
 }
+
+export default config
